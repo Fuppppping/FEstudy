@@ -7,14 +7,16 @@
 JSON 作为JavaScript中重要的数据格式，已经独立于JavaScript 很多编程语言都支持了JSON数据类型的解析(如python，GO等)
     
 JSON有两种结构，分别为对象
-```var person = {
+```json
+var person = {
         "Name":"CLX",
         "Age": 20
     }
 ```
 
 数组
-```var members =[
+```json
+var members =[
         {
             "Name":"CLX",
             "Age" : 20
@@ -33,11 +35,12 @@ tips：JSON内部数据中 字符串也必须用双引号
 
 ## JSONP
 
-### 为何使用JSONP
+### 为何使用JSONP    
+
 1.Ajax无法跨域无权限访问(但通过服务端代理可以)
 2.script/img/iframe等标签(具有src属性)可以跨域，页面调用js也可跨域，为了跨域进行数据交互，我们需要利用这一特性进行数据交互即JSONP
 ----
-### JSONP原理
+### JSONP原理    
 由于src属性不受同源政策限制，所以我们可以通过向页面添加script标签来完成数据交互，script标签不止可以调用js文件，也可调用php等动态资源，后台被访问后返回一个函数调用的字符串，在前端script标签内该字符串就变为一个js的函数调用，实参为我们所需要的数据。
 
 但也因为以上原理，jsonp只可以进行GET而不能进行POST因为其参数已经显示生成在URL中。其次动态生成script标签本身就是一种注入行为，需要防止其他别有用心的人通过JSONP的方式进行注入，带来安全隐患。
